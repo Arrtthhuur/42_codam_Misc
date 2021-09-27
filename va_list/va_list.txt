@@ -1,0 +1,28 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         ::::::::             #
+#    va_list.txt                                        :+:    :+:             #
+#                                                      +:+                     #
+#    By: abeznik <abeznik@student.codam.nl>           +#+                      #
+#                                                    +#+                       #
+#    Created: 2021/09/27 15:10:37 by abeznik       #+#    #+#                  #
+#    Updated: 2021/09/27 15:11:57 by abeznik       ########   odam.nl          #
+#                                                                              #
+# **************************************************************************** #
+
+C library macro 
+	void va_start(va_list ap, last_arg)
+initializes ap variable to be used with the va_arg and va_end macros. 
+
+The last_arg is the last known fixed argument being passed to the function i.e. the argument before the ellipsis.
+
+This macro must be called before using va_arg and va_end.
+
+Parameters
+	ap -		object of va_list and holds the information needed to retrieve additional args with va_arg
+	last_arg -	last known fixed arg being passed to the function
+
+Return value
+	NA
+
+stdarg.h defines a variable type va_list and 3 macros to be used to get the args in a function when there is a variable number of args
