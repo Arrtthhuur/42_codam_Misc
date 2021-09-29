@@ -6,7 +6,7 @@
 #    By: abeznik <abeznik@student.codam.nl>           +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/09/27 15:10:37 by abeznik       #+#    #+#                  #
-#    Updated: 2021/09/27 15:11:57 by abeznik       ########   odam.nl          #
+#    Updated: 2021/09/27 15:49:50 by abeznik       ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,58 @@ C library macro
 	void va_start(va_list ap, last_arg)
 initializes ap variable to be used with the va_arg and va_end macros. 
 
-The last_arg is the last known fixed argument being passed to the function i.e. the argument before the ellipsis.
+The last_arg is the last known fixed argument being passed to the function i.e. the argument before the ellipsis. (,...)
 
 This macro must be called before using va_arg and va_end.
 
+
 Parameters
-	ap -		object of va_list and holds the information needed to retrieve additional args with va_arg
-	last_arg -	last known fixed arg being passed to the function
+----------
+	ap -		object of va_list and holds the information needed to retrieve additional args with va_arg.
+	last_arg -	last known fixed arg being passed to the function.
+
 
 Return value
+------------
 	NA
 
-stdarg.h defines a variable type va_list and 3 macros to be used to get the args in a function when there is a variable number of args
+stdarg.h defines a variable type va_list and 3 macros to be used to get the args in a function when there is a variable number of args.
+
+A function of variable arguments is defined with the ellipsis (,...) at the end of the parameter list.
+
+
+Library Variables
+-----------------
+    va_list -   type suitable for holding information needed by the 3 macros (va_start(), _arg() & _end()).
+
+
+Library Macros
+--------------
+    void va_start(va_list ap, last_arg)
+
+init ap variable to be used with va_arg and va_end.
+last_arg is last known fixed arg being passed to the function (arg before ellipsis).
+
+    type va_arg(va_list ap, type)
+
+retrieves the next arg in the param list of the function with type <type>.
+
+    void va_end(va_list ap)
+
+allows a function with variable args which used the va_start to return.
+if va_end is not called before returning from the function, result is undefined.
+
+
+void foo(va_alist)
+    va_dcl
+{
+    va_list ap;
+
+   va_start(ap);
+    while (...) {
+        ...
+        x = va_arg(ap, type);
+        ...
+    }
+    va_end(ap);
+}

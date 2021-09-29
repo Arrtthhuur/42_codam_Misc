@@ -6,7 +6,7 @@
 /*   By: abeznik <abeznik@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/23 10:13:32 by abeznik       #+#    #+#                 */
-/*   Updated: 2020/11/23 11:13:11 by abeznik       ########   odam.nl         */
+/*   Updated: 2021/09/27 15:31:41 by abeznik       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include "libft/libft.h"
 
-int		sum(int num_args, ...)
+int	sum(int num_args, ...)
 {
 	va_list	ap;
 	int		val;
@@ -35,7 +35,7 @@ int		sum(int num_args, ...)
 	return (val);
 }
 
-int		min(int num_args, ...)
+int	min(int num_args, ...)
 {
 	int		i;
 	int		min;
@@ -60,20 +60,17 @@ int		min(int num_args, ...)
 	return (min);
 }
 
-int		main(void)
+int	main(void)
 {
 	int		ret_sum;
 	int		ret_min;
 	int		count;
 
 	count = 5;
-
 	ret_min = min(count, 12, 67, 6, 7, 100);
 	ft_putstr("Minimun value is ");
 	ft_putnbr(ret_min);
-
 	ft_putchar('\n');
-
 	ret_sum = sum(3, 10, 20, 30);
 	ft_putstr("Sum of 10, 20 and 30 = ");
 	ft_putnbr(ret_sum);
